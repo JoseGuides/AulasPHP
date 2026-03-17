@@ -29,6 +29,9 @@
     <th width="30%">Nome</th>
     <th width="15%">CPF</th>
     <th width="12%">Data NCTO</th>
+    <th width="12%">Nota 1</th>
+    <th width="12%">Nota 2</th>
+    <th width="12%">Media</th>
   </tr>
 
 <?php
@@ -36,7 +39,7 @@
 	$nome = $_POST['nome'];
 	$cpf = $_POST['cpf'];
 	
-	$query = "SELECT *
+	$query = "SELECT *, (nota1 + nota2) / 2 AS media
 			  FROM aluno 
 			  WHERE matricula > 0 ";
 	$query .= ($nome ? " AND nome LIKE '%$nome%' " : "");
@@ -54,6 +57,10 @@
       <th width="30%"><?php echo $coluna['nome']; ?></th>
       <th width="15%"><?php echo $coluna['cpf']; ?></th>
       <th width="12%"><?php echo $coluna['data_ncto']; ?></th>
+      <th width="12%"><?php echo $coluna['nota1']; ?></th>
+      <th width="12%"><?php echo $coluna['nota2']; ?></th>
+      <th width="12%"><?php echo $coluna['media']; ?></th>
+
   	</tr>
 
     <?php

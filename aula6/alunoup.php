@@ -14,10 +14,13 @@
   <tr>
     <td width="18%" align="right">matricula:</td>
     <td width="26%"><input type="number" name="matricula" /></td>
-    <td width="18%" align="right">Nome:</td>
-    <td width="26%"><input type="text" name="nome" /></td>
-    <td width="18%" align="right">data_ncto:</td>
-    <td width="26%"><input type="date" name="data_ncto" /></td>
+    <td width="18%" align="right">nota1:</td>
+    <td width="26%"><input type="number" name="nota1" /></td>
+    <td width="18%" align="right">nota2:</td>
+    <td width="26%"><input type="number" name="nota2" /></td>
+
+
+
     <td width="21%"><input type="submit" name="botao" value="Alterar" /></td>
   </tr>
 </table>
@@ -26,19 +29,17 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['botao']) && $_POST['botao'] == "Alterar") {
     $matricula = intval($_POST['matricula']);
-    $data_ncto = intval($_POST['data_ncto']);
-    $nome = mysqli_real_escape_string($mysqli, $_POST['nome']);
+    $nota1 = intval($_POST['nota1']);
+    $nota2 = intval($_POST['nota2']);
 
     // Validação básica
     if ($matricula > 0) {
-        // Atualiza a data_ncto se for fornecida
-        if ($data_ncto > 0) {
-            mysqli_query($mysqli, "UPDATE aluno SET data_ncto='$data_ncto' WHERE matricula='$matricula'");
-        }
 
-        // Atualiza o nome se for fornecido
-        if (!empty($nome)) {
-            mysqli_query($mysqli, "UPDATE aluno SET nome='$nome' WHERE matricula='$matricula'");
+        if (!empty($nota1)) {
+            mysqli_query($mysqli, "UPDATE aluno SET nota1='$nota1' WHERE matricula='$matricula'");
+        }
+        if (!empty($nota2)) {
+            mysqli_query($mysqli, "UPDATE aluno SET nota2='$nota2' WHERE matricula='$matricula'");
         }
 
         // Fecha a conexão com o banco de dados

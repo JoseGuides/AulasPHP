@@ -30,6 +30,15 @@
     <td>Data Nascimento:</td>
     <td><input type="date" name="data_ncto" ></td>
   </tr>
+  
+    <tr>
+    <td>Nota 1:</td>
+    <td><input type="number" name="nota1" ></td>
+  </tr>
+  <tr>
+    <td>Nota2:</td>
+    <td><input type="number" name="nota2" ></td>
+  </tr>
   <tr>
     <td colspan="2" align="right"><input type="submit" value="Gravar" name="botao"></td>
     </tr>	
@@ -43,10 +52,12 @@ if (@$_POST['botao'] == "Gravar")
 		$nome = $_POST['nome'];
 		$cpf = $_POST['cpf'];
 		$data_ncto = $_POST['data_ncto'];
+    $nota1 = $_POST['nota1'];
+    $nota2 = $_POST['nota2'];
 	
 		
-		$insere = "INSERT into aluno (nome, cpf, data_ncto) 
-    VALUES ('$nome', '$cpf', '$data_ncto')";
+		$insere = "INSERT into aluno (nome, cpf, data_ncto, nota1, nota2) 
+    VALUES ('$nome', '$cpf', '$data_ncto', '$nota1', '$nota2')";
 		mysqli_query($mysqli, $insere) or die ("Não foi possivel inserir os dados");
 	}
 
